@@ -1,0 +1,49 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #010409; color: #c9d1d9;
+  font: 14px/1.5 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding: 16px;
+}
+header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+h1 { font-size: 20px; color: #58a6ff; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.badge {
+  padding: 3px 10px; border-radius: 12px; font-size: 12px;
+  background: #161b22; border: 1px solid #30363d; color: #8b949e;
+}
+.badge.ok { color: #3fb950; border-color: #3fb95055; }
+.badge.warn { color: #d29922; border-color: #d2992255; }
+.fps { font-weight: bold; }
+.fps.ok { color: #3fb950; } .fps.warn { color: #d29922; } .fps.err { color: #f85149; }
+
+main { display: flex; gap: 16px; align-items: flex-start; }
+.left { flex: 0 0 auto; }
+.right { flex: 1 1 320px; min-width: 280px; display: flex; flex-direction: column; height: 100%; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; max-width: 1000px; }
+button {
+  background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
+  border-radius: 6px; padding: 6px 12px; font-size: 13px; cursor: pointer;
+}
+button:hover { background: #30363d; border-color: #8b949e; }
+button.primary { background: #1f6feb; border-color: #1f6feb; color: #fff; }
+button.primary:hover { background: #388bfd; }
+
+canvas { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; display: block; }
+.hint { max-width: 1000px; margin-top: 8px; color: #8b949e; font-size: 12px; }
+
+.log-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 10px; background: #161b22; border: 1px solid #30363d;
+  border-bottom: none; border-radius: 8px 8px 0 0; font-weight: bold;
+}
+#log {
+  height: 560px; overflow-y: auto; background: #0d1117;
+  border: 1px solid #30363d; border-radius: 0 0 8px 8px; padding: 8px;
+  font: 12px/1.7 ui-monospace, Consolas, monospace; white-space: pre-wrap; word-break: break-all;
+}
+#log .entry { border-left: 3px solid transparent; padding-left: 6px; margin-bottom: 2px; }
+#log .entry.ok { color: #3fb950; border-left-color: #3fb950; }
+#log .entry.info { color: #8b949e; border-left-color: #30363d; }
+#log .entry.warn { color: #d29922; border-left-color: #d29922; }
+#log .entry.error { color: #f85149; border-left-color: #f85149; }

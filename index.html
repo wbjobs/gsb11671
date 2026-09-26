@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAssembly 多内存 × 多表 演示</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>WebAssembly 多内存 × 多表</h1>
+    <div class="badges">
+      <span id="badge-support" class="badge">multi-memory: 检测中…</span>
+      <span id="badge-mode" class="badge">模式: 初始化中…</span>
+      <span id="badge-busy" class="badge ok">Worker: 空闲</span>
+      <span class="badge">主线程 FPS: <span id="fps" class="fps ok">60</span></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="left">
+      <div id="controls" class="controls"></div>
+      <canvas id="cv" width="1000" height="480"></canvas>
+      <p class="hint">
+        技术栈：WebAssembly（手写二进制编码，无第三方依赖）+ Web Worker（全部 wasm 操作在 Worker 中执行）
+        + TypedArray（直读/直写 wasm 线性内存）+ Canvas（内存/表状态可视化）。
+        压力测试期间 FPS 应保持 ~60，证明主线程未被阻塞。
+      </p>
+    </section>
+    <aside class="right">
+      <div class="log-head">
+        <span>运行日志</span>
+        <button id="clearLog">清空</button>
+      </div>
+      <div id="log"></div>
+    </aside>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
