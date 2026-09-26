@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAssembly 多内存 × 多表演示</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>WebAssembly 多内存 × 多表</h1>
+    <span id="cap" class="badge">检测中…</span>
+    <span id="fps" class="badge neutral">主线程 -- FPS</span>
+  </header>
+
+  <main>
+    <aside>
+      <section>
+        <h2>内存操作</h2>
+        <button data-cmd="fillPattern0">填充 mem0 图案</button>
+        <button data-cmd="fillPattern1">填充 mem1 图案</button>
+        <button data-cmd="copy01">拷贝 mem0 → mem1</button>
+        <button data-cmd="copy10">拷贝 mem1 → mem0</button>
+        <button data-cmd="growMem0">mem0 增长 1 页</button>
+        <button data-cmd="growMem1">mem1 增长 1 页</button>
+        <button data-cmd="oobRead" class="danger">越界读 mem0（trap）</button>
+        <button data-cmd="oobWrite" class="danger">越界写 mem1（trap）</button>
+      </section>
+      <section>
+        <h2>表操作</h2>
+        <button data-cmd="copyT0toT1">跨表复制 t0 → t1</button>
+        <button data-cmd="callT0">间接调用 t0[0..1]</button>
+        <button data-cmd="callT1">间接调用 t1[0..1]</button>
+        <button data-cmd="callT0Wrong" class="danger">错误签名间接调用</button>
+        <button data-cmd="growTable0">t0 增长 1 项</button>
+        <button data-cmd="growTable1">t1 增长 1 项</button>
+        <button data-cmd="tableOOB" class="danger">表越界访问</button>
+        <button data-cmd="refMismatch" class="danger">引用类型不匹配</button>
+      </section>
+      <section>
+        <h2>系统</h2>
+        <button data-cmd="instantiateFail" class="danger">实例化失败演示</button>
+        <button data-cmd="stress">压力测试（Worker 内）</button>
+        <button data-cmd="reset">重置实例</button>
+      </section>
+    </aside>
+
+    <section class="panel">
+      <canvas id="viz"></canvas>
+      <h2>日志</h2>
+      <div id="log"></div>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
